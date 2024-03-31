@@ -1,0 +1,26 @@
+{% extends "game/base.html" %}
+
+{% block content %}
+<div class="p-4 m-2 bg-light border border-success rounded">
+
+<h2>{{object.title}}</h2>
+<h3>投稿したユーザー : {{object.user}}</h3>
+<h3 class="p-2">評価(1~5) : <b>{{object.rate}}</b></h3>
+<div class="p-2">
+コメント：{{object.text}}
+</div>
+{% if object.image %}  
+<div class="p-2">
+    <img src="{{object.image.url}}" alt="{{object.title}}" width="40%">
+</div>
+{% endif %}  
+
+</div>
+
+{% if current_user.username == object.user.username %}
+    <div class="p-3 d-flex justify-content-end">
+        <a href="{% url 'updatereview' object.pk %}" class="btn btn-primary">編集</a>
+        <a href="{% url 'deletereview' object.pk %}" class="btn btn-danger ml-2">削除</a>
+    </div>
+{% endif %}
+{% endblock %}

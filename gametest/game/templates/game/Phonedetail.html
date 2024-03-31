@@ -1,0 +1,29 @@
+{% extends "game/base.html" %}
+
+{% block content %}
+
+<div class="p-4 m-4 bg-light border border-success rounded">
+<h1>機種名:{{object.name}}</h1>
+    機種の詳細<br>
+SoC:{{object.soc}}<br>
+画面サイズ{{object.displaysize}}<br>
+</div>
+<h2 class="p-4 m-4">{{object.name}}の投稿一覧</h2>
+
+{% for item in object_list2 %}
+<div class="p-4 m-5 bg-light border border-success rounded">
+    <h3>{{item.name}}の投稿</h3>
+    {% for item2 in object_list %}
+        {% if object.name|stringformat:"s" == item2.phonecategory|stringformat:"s" %}
+        {% if item.name|stringformat:"s" == item2.gamecategory|stringformat:"s" %}
+        <div class="m-2 p-2">
+        <a href="{% url 'review' item2.pk %}">{{item2.title}}</a>
+        評価:{{item2.rate}} (クリックして詳細を表示)<br>
+        </div>
+        {% endif %}
+        {% endif %}
+    {% endfor %}
+</div>
+{% endfor %}
+
+{% endblock %}

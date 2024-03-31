@@ -1,0 +1,14 @@
+{% extends "game/base.html" %}
+<h1>削除</h1>
+{% block content %}
+{% if request.user.is_authenticated %}
+本当に削除しますか？
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+{% else %}
+投稿を削除するにはログインする必要があります
+{% endif %}
+{% endblock content %}

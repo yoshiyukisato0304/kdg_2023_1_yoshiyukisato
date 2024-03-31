@@ -1,0 +1,26 @@
+
+{% extends "game/base.html" %}
+
+{% block content %}
+
+<h2 class="p-4 m-4">色々なスマートフォンでのゲームの動作を確認、投稿できるサイトです</h2>
+
+<h3 class="p-4 m-4">スマホ</h3>
+{% for item in object_list %}
+        {% if forloop.counter <= 3 %}
+        <div class="p-4 m-4 bg-light border border-success rounded">
+        <a href="{% url 'phone' item.pk %}">{{item.name}}</a>
+</div>
+        {% endif %}
+{% endfor %}
+
+<h3 class="p-4 m-4">ゲーム</h3>
+{% for item in object_list2 %}
+        {% if forloop.counter <= 3 %}
+        <div class="p-4 m-4 bg-light border border-success rounded">
+        <a href="{% url 'game' item.pk %}">{{item.name}}</a>
+        </div>
+        {% endif %}
+{% endfor %}
+
+{% endblock %}

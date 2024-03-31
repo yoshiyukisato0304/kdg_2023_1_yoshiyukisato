@@ -1,0 +1,11 @@
+{% extends "game/base.html" %}
+
+{% block content %}
+<h1 class="m-3 p-3">ゲーム一覧</h1>
+{% for item in object_list %}
+<div class="p-4 m-4 bg-light border border-success rounded">
+       <a href="{% url 'game' item.pk %}">{{item.name}}</a>
+</div>
+{% endfor %}
+
+{%  endblock %}

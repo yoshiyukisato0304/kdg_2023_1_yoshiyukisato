@@ -1,0 +1,16 @@
+{% extends 'game/templates/game/base.html' %}
+
+<title>アカウント作成</title>
+<h1>アカウント作成</h1>
+{% block content %}
+<form method="post" class="p-4 m-4 bg-light border border-success rounded form-group">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="ユーザーID" class="p-2 m-2"><br>
+    <input type="password" name="password1" placeholder="パスワード" class="p-2 m-2"><br>
+    <input type="password" name="password2" placeholder="パスワード確認用" class="p-2 m-2"><br>
+    {% if form.errors %}
+    <span>利用できないIDやパスワードの可能性があります。入力内容を再度ご確認ください</span>
+    {% endif %}
+    <button type="submit" class="m-4">アカウント作成</button>
+</form>
+{% endblock %}

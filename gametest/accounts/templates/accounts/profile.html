@@ -1,0 +1,13 @@
+{% extends "game/base.html" %}
+
+{% block content %}
+<h1 class="m-3 p-3">{{ request.user.username }}の投稿一覧</h1>
+{% for item in object_list %}
+{% if item.user.username == request.user.username %}
+<div class="p-4 m-4 bg-light border border-success rounded">
+       <a href="{% url 'review' item.pk %}">{{item.title}}</a>
+</div>
+{% endif %}
+{% endfor %}
+
+{%  endblock %}
